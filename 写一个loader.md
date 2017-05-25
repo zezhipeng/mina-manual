@@ -24,12 +24,12 @@
 ### 编写 loader
 
 在根目录下新建 `mina-loader` 文件夹。在里面新建 index.js 文件
-```
+```javascript
 const loaderUtils = require('loader-utils')
 const { parseComponent } = require('vue-template-compiler')
 
 module.exports = function (content) {
-  this.cacheable()
+  this.cacheable() //每个 loader 必须做的一件事
 
   const parts = parseComponent(content)
 
