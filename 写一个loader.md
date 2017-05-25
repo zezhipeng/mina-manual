@@ -19,3 +19,23 @@
 }
 ```
 这样的 object。所以如果我们假如自定义一个`.mina`文件（或者直接用`.vue`）格式文件，利用[vue-template-compiler](https://github.com/YiSiWang/vue-template-compiler)解析分离，然后生成相应的三个文件就可以了。
+
+<br>
+### 编写 loader
+
+在根目录下新建 `mina-loader` 文件夹。在里面新建 index.js 文件
+```
+const loaderUtils = require('loader-utils')
+const { parseComponent } = require('vue-template-compiler')
+
+module.exports = function (content) {
+  this.cacheable()
+
+  const parts = parseComponent(content)
+
+  console.log(parts)
+  return ``
+}
+
+
+```
